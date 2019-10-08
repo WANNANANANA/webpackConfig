@@ -6,6 +6,9 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     mode: 'development',
+    optimization: { // 耗性能 生产环境下使用即可
+        runtimeChunk: true
+    },
     entry: {
         index: ['@babel/polyfill', './src/js/index.js'], // @babel/polyfill能让ie9支持promise
         other: ['@babel/polyfill', './src/js/other.js']
