@@ -2,6 +2,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -96,10 +97,11 @@ module.exports = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'style/[name].css',
         }),
-        new CleanWebpackPlugin(),
+        new OptimizeCSSAssetsPlugin(),
         new HtmlWebpackPlugin({
             template: './index.html',
             filename: 'index.html',
