@@ -3,15 +3,27 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
     optimization: { // 耗性能 生产环境下使用即可
+        minimizer: [
+            new TerserWebpackPlugin({
+                terserOptions: {
+                    compress: {
+                        warnings: false,
+                        drop_console: true,
+                        drop_debugger: true,
+                        pure_funcs: ['console.log'] 
+                    }
+                }
+            })
+        ],
         runtimeChunk: true
     },
     entry: {
-        index: ['@babel/polyfill', './src/js/index.js'], // @babel/polyfill能让ie9支持promise
-        other: ['@babel/polyfill', './src/js/other.js']
+        index: [ './src/js/index.js'], // @babel/polyfill能让ie9支持promise
+        other: ['./src/js/other.js']
     },
     output: {
         filename: '[name]-[chunkhash:8].js',
