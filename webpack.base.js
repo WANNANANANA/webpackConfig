@@ -9,7 +9,6 @@ module.exports = {
         other: ['@babel/polyfill', './src/js/other.js']
     },
     output: {
-        filename: '[name]-[chunkhash:8].js',
         path: path.resolve(__dirname, 'dist')
     },
     resolve: {

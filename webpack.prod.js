@@ -33,7 +33,8 @@ module.exports = merge(base, {
         runtimeChunk: true
     },
     output: {
-        publicPath: 'http://localhost:8888/'
+        filename: '[name]-[chunkhash:8].js',
+        publicPath: 'http://localhost:8880/'
     },
     watch: true,
     watchOptions: {

@@ -29,6 +29,11 @@ console.log('~~~~~~~~~~~~~~~~~');
 //     alert('这个是ie浏览器');
 // }
 
-const reg = /MSIE6.0|MSIE7.0|MSIE8.0|MSIE9.0/g;
+const a = 'hello world lalal';
+document.body.innerHTML = a;
+console.log('这个是入口文件indexaaa');
 
-console.log(reg.test('MSIE9.0'));
+if (module.hot) {
+    module.hot.accept();
+}
+

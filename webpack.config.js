@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+// const webpack = require('webpack');
 
 module.exports = {
     optimization: { // 耗性能 生产环境下使用即可
@@ -51,9 +52,10 @@ module.exports = {
     },
     devServer: {
         contentBase: './dist',
-        port: 8888,
+        port: 8080,
         open: true,
-        progress: true
+        progress: true,
+        // hot: true
     },
     watch: true,
     watchOptions: {
@@ -125,6 +127,7 @@ module.exports = {
         ]
     },
     plugins: [
+        // new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'style/[name].css',
