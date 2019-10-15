@@ -3,7 +3,7 @@ const base = require('./webpack.base.js');
 const webpack = require('webpack');
 
 module.exports = merge(base, {
-    devtool: 'inline-source-map',
+    // devtool: 'inline-source-map',
     output: {
         filename: '[name]-[hash:8].js',
         publicPath: 'http://localhost:8888/'
@@ -16,6 +16,9 @@ module.exports = merge(base, {
         hot: true
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.ProvidePlugin({ // 不必通过import/require使用模块
+        //     $: 'jquery'
+        // })
     ]
 })

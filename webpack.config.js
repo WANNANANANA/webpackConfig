@@ -2,7 +2,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 // const webpack = require('webpack');
 
@@ -68,14 +68,16 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                use: [{
-                    loader: 'babel-loader', // IE6语法转化为IE5语法
-                    options: {
-                        presets: [
-                            '@babel/preset-env' // IE6语法转化为IE5语法
-                        ]
+                use: [
+                    {
+                        loader: 'babel-loader', // IE6语法转化为IE5语法
+                        options: {
+                            presets: [
+                                '@babel/preset-env' // IE6语法转化为IE5语法
+                            ]
+                        }
                     }
-                }],
+                ],
                 include: path.resolve(__dirname, 'src') // 这个要谨慎使用 比如当@babel-polyfill单独提取出来后 它是属于node_modules的
             },
             {
@@ -132,7 +134,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'style/[name].css',
         }),
-        new OptimizeCSSAssetsPlugin(),
+        new OptimizeCssAssetsPlugin(),
         new HtmlWebpackPlugin({
             template: './index.html',
             filename: 'index.html',

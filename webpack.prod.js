@@ -5,19 +5,20 @@ const TerserWebpackPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = merge(base, {
+    // devtool: 'source-map',
     optimization: {
-        minimizer: [
-            new TerserWebpackPlugin({
-                terserOptions: {
-                    compress: {
-                        warnings: false,
-                        drop_console: true,
-                        drop_debugger: true,
-                        pure_funcs: ['console.log']
-                    }
-                }
-            })
-        ],
+        // minimizer: [
+        //     new TerserWebpackPlugin({
+        //         terserOptions: {
+        //             compress: {
+        //                 warnings: false,
+        //                 drop_console: true,
+        //                 drop_debugger: true,
+        //                 pure_funcs: ['console.log']
+        //             }
+        //         }
+        //     })
+        // ],
         splitChunks: {
             cacheGroups: {
                 vendor: {
@@ -45,15 +46,15 @@ module.exports = merge(base, {
     module: {
         rules: [
             {
-                test: /\.js$/,
-                use: [{
-                    loader: 'babel-loader', // IE6语法转化为IE5语法
-                    options: {
-                        presets: [
-                            '@babel/preset-env' // IE6语法转化为IE5语法
-                        ]
-                    }
-                }]
+                // test: /\.js$/,
+                // use: [{
+                //     loader: 'babel-loader', // IE6语法转化为IE5语法
+                //     options: {
+                //         presets: [
+                //             '@babel/preset-env' // IE6语法转化为IE5语法
+                //         ]
+                //     }
+                // }]
             }
         ],
     },
